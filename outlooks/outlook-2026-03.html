@@ -1,0 +1,639 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Institutional Investment Outlook — March 2026</title>
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Fira+Sans:ital,wght@0,300;0,400;0,500;0,600;0,700;1,400&family=Fira+Code:wght@400;500&display=swap');
+
+  :root {
+    --bg: #09090b; --card: #131316; --card-border: #1e1e24; --card-hover: #1a1a20;
+    --text: #e4e4e7; --text-muted: #a1a1aa; --text-dim: #71717a; --text-bright: #fafafa;
+    --orange: #f97316; --cyan: #06b6d4; --purple: #a855f7;
+    --green: #22c55e; --red: #ef4444; --amber: #f59e0b; --blue: #3b82f6; --gold: #eab308;
+    --green-dim: #16a34a33; --red-dim: #ef444422; --amber-dim: #f59e0b22; --blue-dim: #3b82f622;
+  }
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  body {
+    font-family: 'Fira Sans', -apple-system, sans-serif;
+    background: var(--bg); color: var(--text);
+    line-height: 1.7; padding: 2.5rem 1.5rem;
+    max-width: 1040px; margin: 0 auto;
+  }
+
+  a { color: var(--cyan); text-decoration: none; }
+  a:hover { text-decoration: underline; }
+
+  h1 { font-size: 2rem; font-weight: 700; color: var(--orange); margin-bottom: 0.15rem; letter-spacing: -0.02em; }
+  .subtitle { font-size: 0.82rem; color: var(--text-dim); margin-bottom: 2.5rem; font-family: 'Fira Code', monospace; }
+
+  h2 {
+    font-size: 1.3rem; font-weight: 700; color: var(--text-bright);
+    margin: 3rem 0 1.25rem; padding-bottom: 0.6rem;
+    border-bottom: 2px solid var(--card-border);
+    display: flex; align-items: center; gap: 0.6rem;
+  }
+  h2 .num {
+    display: inline-flex; align-items: center; justify-content: center;
+    width: 30px; height: 30px; background: var(--orange); color: #000;
+    border-radius: 7px; font-size: 0.85rem; font-weight: 700; flex-shrink: 0;
+  }
+
+  h3 { font-size: 1.05rem; font-weight: 600; color: var(--cyan); margin: 1.75rem 0 0.75rem; }
+  h4 { font-size: 0.95rem; font-weight: 600; color: var(--text); margin: 1.25rem 0 0.5rem; }
+
+  p { margin-bottom: 0.9rem; font-size: 0.92rem; }
+  strong { color: var(--text-bright); font-weight: 600; }
+
+  .card { background: var(--card); border: 1px solid var(--card-border); border-radius: 12px; padding: 1.4rem 1.6rem; margin: 1.25rem 0; }
+
+  /* Regime banner */
+  .regime-banner {
+    background: linear-gradient(135deg, #1a0a00 0%, var(--bg) 100%);
+    border: 1px solid #f9731640; border-radius: 14px;
+    padding: 1.75rem; margin: 1.75rem 0;
+    display: grid; grid-template-columns: repeat(3, 1fr); gap: 1.25rem;
+  }
+  .regime-item { display: flex; flex-direction: column; gap: 0.3rem; }
+  .regime-label { font-size: 0.65rem; font-weight: 600; text-transform: uppercase; letter-spacing: 0.1em; color: var(--text-dim); }
+  .regime-value { font-family: 'Fira Code', monospace; font-size: 0.9rem; font-weight: 500; }
+  .v-red { color: var(--red); } .v-amber { color: var(--amber); } .v-green { color: var(--green); }
+
+  /* Data grid */
+  .data-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(145px, 1fr)); gap: 0.6rem; margin: 1.25rem 0; }
+  .data-cell { background: var(--card); border: 1px solid var(--card-border); border-radius: 10px; padding: 0.8rem; text-align: center; }
+  .data-cell .label { font-size: 0.65rem; color: var(--text-dim); text-transform: uppercase; letter-spacing: 0.07em; margin-bottom: 0.2rem; }
+  .data-cell .value { font-family: 'Fira Code', monospace; font-size: 1.15rem; font-weight: 600; font-variant-numeric: tabular-nums; }
+  .data-cell .change { font-family: 'Fira Code', monospace; font-size: 0.72rem; margin-top: 0.15rem; }
+  .up { color: var(--green); } .down { color: var(--red); } .flat { color: var(--text-muted); } .fear { color: var(--red); }
+
+  /* Lists */
+  ul, ol { margin: 0.5rem 0 1rem 1.3rem; }
+  li { margin-bottom: 0.45rem; line-height: 1.6; font-size: 0.92rem; }
+
+  /* Tables */
+  table { width: 100%; border-collapse: collapse; margin: 1.25rem 0; font-size: 0.82rem; }
+  th { background: #15151a; color: var(--text-muted); font-weight: 600; text-transform: uppercase; font-size: 0.68rem; letter-spacing: 0.07em; padding: 0.65rem 0.5rem; text-align: center; border-bottom: 2px solid var(--card-border); position: sticky; top: 0; z-index: 1; }
+  th:first-child { text-align: left; }
+  td { padding: 0.55rem 0.5rem; border-bottom: 1px solid #1a1a1f; text-align: center; font-family: 'Fira Code', monospace; font-size: 0.78rem; }
+  td:first-child { text-align: left; font-family: 'Fira Sans', sans-serif; font-weight: 500; color: var(--text-bright); font-size: 0.85rem; }
+  tr:hover { background: #15151a; }
+
+  .ow { color: var(--green); font-weight: 700; } .uw { color: var(--red); font-weight: 700; }
+  .n { color: var(--text-dim); } .na { color: #2a2a2a; }
+
+  .consensus-bullish { color: #000; background: var(--green); padding: 3px 10px; border-radius: 5px; font-weight: 700; font-size: 0.68rem; letter-spacing: 0.03em; }
+  .consensus-split { color: #000; background: var(--amber); padding: 3px 10px; border-radius: 5px; font-weight: 700; font-size: 0.68rem; }
+  .consensus-shifting { color: #000; background: var(--purple); padding: 3px 10px; border-radius: 5px; font-weight: 700; font-size: 0.68rem; }
+
+  /* TacSignal meter */
+  .tac-row { display: grid; grid-template-columns: 1.5fr 0.8fr 0.6fr 0.8fr 0.6fr 1fr; gap: 0.5rem; padding: 0.55rem 0; border-bottom: 1px solid #1a1a1f; font-size: 0.82rem; align-items: center; }
+  .tac-header { font-size: 0.68rem; color: var(--text-dim); font-weight: 600; text-transform: uppercase; letter-spacing: 0.07em; }
+  .tac-bar-wrap { height: 6px; background: #1e1e24; border-radius: 3px; position: relative; overflow: hidden; }
+  .tac-bar { height: 100%; border-radius: 3px; position: absolute; left: 50%; }
+  .tac-bar.pos { background: var(--green); }
+  .tac-bar.neg { background: var(--red); right: 50%; left: auto; }
+  .tac-call { font-family: 'Fira Code', monospace; font-weight: 700; font-size: 0.8rem; }
+
+  /* Action cards */
+  .action-card { border-radius: 12px; padding: 1.3rem 1.6rem; margin: 1rem 0; border-left: 5px solid; }
+  .action-high { background: #1a0808; border-color: var(--red); }
+  .action-moderate { background: #1a1400; border-color: var(--amber); }
+  .action-low { background: #0d1a0d; border-color: var(--text-dim); }
+  .action-header { display: flex; justify-content: space-between; align-items: center; margin-bottom: 0.8rem; flex-wrap: wrap; gap: 0.5rem; }
+  .action-ticker { font-family: 'Fira Code', monospace; font-size: 1.15rem; font-weight: 700; color: var(--text-bright); }
+  .action-badge { padding: 4px 12px; border-radius: 5px; font-size: 0.68rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.04em; }
+  .badge-high { background: var(--red); color: #000; } .badge-moderate { background: var(--amber); color: #000; } .badge-low { background: var(--text-dim); color: #000; }
+  .action-detail { font-size: 0.85rem; color: var(--text-muted); margin-bottom: 0.35rem; }
+  .action-detail strong { color: var(--text); }
+  .counter-case { margin-top: 0.8rem; padding-top: 0.8rem; border-top: 1px solid #ffffff0d; font-size: 0.82rem; color: var(--text-dim); font-style: italic; }
+
+  /* Behavioral flags */
+  .behav-flag { background: #1a0505; border: 1px solid #ef444433; border-radius: 10px; padding: 1rem 1.3rem; margin: 0.8rem 0; }
+  .behav-name { color: var(--red); font-weight: 600; font-size: 0.92rem; }
+  .behav-score { font-family: 'Fira Code', monospace; color: var(--text-dim); font-size: 0.78rem; }
+
+  /* Collapsible */
+  details { margin: 0.6rem 0; }
+  details > summary { cursor: pointer; list-style: none; font-weight: 600; color: var(--cyan); padding: 0.5rem 0; font-size: 0.95rem; transition: color 0.15s; }
+  details > summary:hover { color: var(--orange); }
+  details > summary::-webkit-details-marker { display: none; }
+  details > summary::before { content: '+ '; color: var(--text-dim); font-family: 'Fira Code', monospace; }
+  details[open] > summary::before { content: '- '; }
+  details .detail-body { padding: 0.5rem 0 0.5rem 1rem; border-left: 2px solid var(--card-border); margin-left: 0.5rem; }
+
+  /* Source library */
+  .source-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(300px, 1fr)); gap: 0.6rem; margin: 1rem 0; }
+  .source-item { background: var(--card); border: 1px solid var(--card-border); border-radius: 8px; padding: 0.75rem 1rem; font-size: 0.82rem; }
+  .source-item .s-name { font-weight: 600; color: var(--text-bright); margin-bottom: 0.2rem; }
+  .source-item .s-desc { color: var(--text-dim); font-size: 0.75rem; }
+  .source-item .s-tier { font-family: 'Fira Code', monospace; font-size: 0.65rem; color: var(--text-dim); float: right; }
+
+  /* Alignment table */
+  .align-tag { padding: 2px 8px; border-radius: 4px; font-size: 0.7rem; font-weight: 600; }
+  .t-aligned { background: var(--green-dim); color: var(--green); }
+  .t-against { background: var(--red-dim); color: var(--red); }
+  .t-caution { background: var(--amber-dim); color: var(--amber); }
+  .t-neutral { color: var(--text-muted); }
+  .t-unrated { color: var(--text-dim); }
+
+  .footer { font-size: 0.72rem; color: #333; margin-top: 3rem; padding-top: 1rem; border-top: 1px solid var(--card-border); }
+
+  @media (max-width: 640px) {
+    body { padding: 1.25rem 0.75rem; }
+    h1 { font-size: 1.5rem; }
+    .regime-banner { grid-template-columns: 1fr 1fr; }
+    .data-grid { grid-template-columns: repeat(2, 1fr); }
+    .tac-row { grid-template-columns: 1fr 1fr; }
+    .source-grid { grid-template-columns: 1fr; }
+    table { font-size: 0.72rem; }
+    td, th { padding: 0.35rem 0.3rem; }
+  }
+</style>
+</head>
+<body>
+
+<h1>Institutional Investment Outlook</h1>
+<div class="subtitle">March 2026 &middot; 2026-03-21 &middot; 17/17 sources &middot; TacSignal overlay active</div>
+
+<!-- ═══ REGIME BANNER ═══ -->
+<div class="regime-banner">
+  <div class="regime-item"><span class="regime-label">Cycle Phase</span><span class="regime-value v-amber">Late Cycle &rarr; Supply Shock</span></div>
+  <div class="regime-item"><span class="regime-label">Risk Appetite</span><span class="regime-value v-red">RISK-OFF</span></div>
+  <div class="regime-item"><span class="regime-label">Growth</span><span class="regime-value v-amber">Decelerating</span></div>
+  <div class="regime-item"><span class="regime-label">Inflation</span><span class="regime-value v-red">Re-Accelerating</span></div>
+  <div class="regime-item"><span class="regime-label">Liquidity</span><span class="regime-value v-red">Tightening</span></div>
+  <div class="regime-item"><span class="regime-label">Fed Stance</span><span class="regime-value v-amber">Hawkish Hold 3.50-3.75%</span></div>
+</div>
+
+<!-- ═══ MARKET SNAPSHOT ═══ -->
+<div class="data-grid">
+  <div class="data-cell"><div class="label">S&P 500</div><div class="value">6,507</div><div class="change down">YTD -3.22%</div></div>
+  <div class="data-cell"><div class="label">VT (World)</div><div class="value">&mdash;</div><div class="change down">YTD -1.07%</div></div>
+  <div class="data-cell"><div class="label">VIX</div><div class="value fear">26.8</div><div class="change down">+11% Fri</div></div>
+  <div class="data-cell"><div class="label">10Y UST</div><div class="value">4.37%</div><div class="change down">+22bp MTD</div></div>
+  <div class="data-cell"><div class="label">2Y UST</div><div class="value">3.90%</div><div class="change flat">10Y-2Y: +47bp</div></div>
+  <div class="data-cell"><div class="label">Gold</div><div class="value">$4,514</div><div class="change down">-10% WoW</div></div>
+  <div class="data-cell"><div class="label">Bitcoin</div><div class="value">$70,005</div><div class="change flat">Consolidating</div></div>
+  <div class="data-cell"><div class="label">Brent Crude</div><div class="value fear">$112</div><div class="change down">War premium</div></div>
+  <div class="data-cell"><div class="label">DXY</div><div class="value">99.4</div><div class="change flat">+0.18%</div></div>
+  <div class="data-cell"><div class="label">CPI / Core</div><div class="value">2.4 / 2.5%</div><div class="change flat">Feb reading</div></div>
+  <div class="data-cell"><div class="label">PPI YoY</div><div class="value fear">3.4%</div><div class="change down">Hot</div></div>
+  <div class="data-cell"><div class="label">Fear & Greed</div><div class="value fear">Extreme Fear</div><div class="change flat">AAII bears 46%</div></div>
+  <div class="data-cell"><div class="label">FMS Cash</div><div class="value v-amber">4.3%</div><div class="change down">+0.9pp MoM</div></div>
+  <div class="data-cell"><div class="label">Next Fed Cut</div><div class="value">Sep '26</div><div class="change flat">43.6% prob</div></div>
+</div>
+
+<!-- ═══ 1. EXECUTIVE SUMMARY ═══ -->
+<h2><span class="num">1</span> Executive Summary</h2>
+
+  <p>March 2026 marks a regime shift. The Iran war has triggered the first genuine supply-shock since 2022, pushing Brent crude above $112 and forcing the Fed into a hawkish hold at 3.50-3.75%. The rate-cut narrative that sustained markets through 2024-2025 is effectively dead &mdash; June cut probability has collapsed to 18.4% and even December sits at just 60.5%.</p>
+  <p>Investor sentiment has collapsed at record speed. The <a href="https://www.hedgefundtips.com/march-2026-bank-of-america-global-fund-manager-survey-results-summary/">BofA Fund Manager Survey</a> recorded the largest single-month drop in growth expectations in its history, with 51% of managers now pricing stagflation. Cash levels surged to 4.3% from 3.4% &mdash; the biggest monthly jump since March 2020. The <a href="https://www.cnn.com/markets/fear-and-greed">CNN Fear & Greed Index</a> sits at "Extreme Fear" and <a href="https://www.aaii.com/sentimentsurvey">AAII bearish sentiment</a> hit 46.4% (vs. 31% historical average).</p>
+  <p>The S&P 500 broke below its 200-day moving average at 6,507 &mdash; its fourth straight week of declines. Gold corrected 10% from ~$5,000 to $4,514 in a single week, the worst weekly drop in four decades, despite being the consensus overweight trade. The BIS noted gold <a href="https://www.bis.org/publ/qtrpdf/r_qt2603a.pdf">"traded more like a risk asset than safe haven"</a> as leveraged positions unwound.</p>
+  <p><strong>The institutional consensus has shifted to:</strong> stagflation risk is real, US equities are vulnerable, and the rotation trade is into EM equities, commodities, and gold. Morgan Stanley stands nearly alone as the major bull, calling this an early-cycle buying opportunity with a 7,800 S&P target.</p>
+  <p><strong>TacSignal confirms:</strong> The quantitative tactical model (as of March 18) aligns with the institutional consensus &mdash; EM, Japan, Asia-Pac, gold, and oil all show OW signals. US equities are neutral, not overweight. The agreement between institutional views and systematic signals strengthens conviction on the rotation trade.</p>
+
+<!-- ═══ 2. MACRO REGIME ═══ -->
+<h2><span class="num">2</span> Macro Regime</h2>
+
+<h3>Growth: Decelerating Under Supply-Shock Pressure</h3>
+<p>The macro picture flipped in March. What was a consensus "soft landing / no landing" narrative three months ago is now a stagflation debate. The Iran war &mdash; with Brent crude above $110 and <a href="https://www.cnbc.com/2026/03/20/stock-market-today-live-updates.html">Pentagon reports of ground troop preparations</a> &mdash; has injected genuine supply-shock uncertainty into an economy that was already wrestling with tariff-driven inflation.</p>
+<p><a href="https://www.goldmansachs.com/insights/goldman-sachs-research/macro-outlook-2026-sturdy-growth-stagnant-jobs-stable-prices">Goldman Sachs</a> still forecasts 2.7% US GDP for 2026, but this predates the March oil spike. <a href="https://www.pimco.com/us/en/insights/tariffs-technology-and-transition">PIMCO</a> had already flagged below-trend growth from tariffs and immigration tightening. <a href="https://www.jpmorgan.com/insights/global-research/outlook/market-outlook">JPM</a> assigns a 35% recession probability. The BofA FMS shows 51% of managers now expect below-trend growth with above-trend inflation &mdash; the textbook definition of stagflation. <a href="https://www.morganstanley.com/insights/podcasts/thoughts-on-the-market/us-equity-market-outlook-2026-mike-wilson">Morgan Stanley&rsquo;s Mike Wilson</a> is the outlier, arguing this is early-cycle re-acceleration and the "three-year rolling recession" has ended.</p>
+
+<h3>Inflation: Re-Accelerating From Energy Shock</h3>
+<p>February CPI held at 2.4%, but the <a href="https://www.cnbc.com/2026/03/18/treasury-yields-move-lower-all-eyes-fed-meeting.html">February PPI surged to 3.4%</a> &mdash; the hottest since February 2025. Core PPI rose 0.5% MoM vs. 0.3% expected. <a href="https://www.ey.com/en_us/insights/strategy/macroeconomics/cpi-report">EY estimates</a> March CPI could spike to 3.3% as gasoline prices jump ~15%. The BofA FMS inflation expectations indicator surged from net +9% to net +45% in a single month &mdash; the most violent repricing of inflation expectations since 2022. PIMCO flags tariff passthrough as an additional inflation risk layered on top of energy.</p>
+
+<h3>Central Bank: Hawkish Hold</h3>
+<p>The <a href="https://www.cnbc.com/2026/03/18/fed-interest-rate-decision-march-2026.html">Fed held at 3.50-3.75%</a> on March 18. The dot plot still pencils in one cut for 2026, but with "elevated upside risks to inflation." Critically, the neutral rate was revised up to 3.0% &mdash; meaning current rates aren't seen as particularly restrictive. <a href="https://www.cmegroup.com/markets/interest-rates/cme-fedwatch-tool.html">CME FedWatch</a> shows June cut probability at just 18.4%, September at 43.6%, December at 60.5%. Markets now price ~25bps of total cuts for 2026.</p>
+<p>The <a href="https://www.ecb.europa.eu/press/press_conference/monetary-policy/2026/html/ecb.is260319~93b1cbad97.en.html">ECB held at 2.0%</a> on March 19 and raised its 2026 inflation forecast to 2.6% while cutting its growth forecast to 0.9%. Lagarde replaced her prior "good place" framing with crisis-management language. Markets are now pricing potential ECB hikes &mdash; a complete reversal from Q4 2025. Stephen Miran dissented at the FOMC in favor of a cut, and Kevin Warsh (Trump's nominated successor to Powell, whose term ends May 2026) has signaled a preference for lower rates &mdash; adding policy uncertainty.</p>
+
+<h3>Liquidity: Tightening With a Hidden Twist</h3>
+<p>Cash levels are surging (BofA FMS: 4.3%, largest monthly jump since March 2020). The dollar is strengthening (DXY 99.4), which tightens global dollar liquidity. Credit conditions are deteriorating: 46% of FMS respondents say default risks are above normal (up from 17%), and 63% identify private credit as the most likely source of a systemic credit event &mdash; the highest proportion ever recorded. The <a href="https://www.bis.org/publ/qtrpdf/r_qt2603.htm">BIS flags Synthetic Risk Transfers (SRTs)</a> &mdash; bank balance-sheet risk offloaded to non-banks has grown fivefold since 2016, covering ~EUR 800B in loans. This is opaque, fragmented, and a systemic risk to monitor.</p>
+<p>But there's a counterforce: <a href="https://www.lynalden.com/february-2026-newsletter/">Lyn Alden reports</a> the Fed has begun balance sheet expansion at ~$40B/month through tax season, with a structural baseline of $20-25B/month thereafter. She calls this the "gradual print" &mdash; the path of least resistance as tax receipts fail to close the fiscal gap. This is structurally inflationary even as the Fed holds rates.</p>
+
+<h3>The Dollar: Structural Weakness &mdash; Strongest Contrarian Consensus</h3>
+<div class="card">
+<p>The single strongest consensus among independent voices is <strong>unanimously bearish on the USD</strong>:</p>
+<ul>
+  <li><strong><a href="https://www.bridgewater.com/research-and-insights">Bridgewater/Dalio</a>:</strong> "Capital wars" &mdash; European holders could dump U.S. assets en masse. The old virtuous cycle (run deficits, foreigners recycle into Treasuries) is breaking down. Dalio in Feb 2026: "We are quite close to [capital war], and it would be very easy to go over the brink."</li>
+  <li><strong><a href="https://www.lynalden.com/february-2026-newsletter/">Lyn Alden</a>:</strong> "Fiscal dominance" &mdash; deficits so large the Fed must eventually monetize, eroding the currency.</li>
+  <li><strong><a href="https://www.macrovoices.com/podcast-transcripts/1415-luke-gromen-trump-tariff-policy-will-drive-gold-even-higher">Luke Gromen</a>:</strong> Tariff policy is "functionally indistinguishable from saying we want gold to be the neutral reserve asset." Dollar must weaken for the debt math to work.</li>
+  <li><strong><a href="https://www.realclearpolitics.com/video/2026/03/01/druckenmiller_portfolio_no_longer_ai-driven_bearish_on_dollar_at_historic_purchasing_power_peak.html">Druckenmiller</a>:</strong> "Foreigners are way, way overloaded in dollars" &mdash; bearish at historic purchasing power peak. He calls this the best macro opportunity set in 10-15 years.</li>
+  <li><strong><a href="https://www.bis.org/publ/qtrpdf/r_qt2603a.pdf">BIS</a>:</strong> Observes capital rotation away from USD assets into European and EM equities already underway.</li>
+</ul>
+<p style="color:var(--amber);margin-top:0.75rem;margin-bottom:0"><strong>Your portfolio: 92.9% USD-denominated.</strong> This is your biggest structural vulnerability. The contrarian consensus supports both your gold positioning (as a USD hedge) and the institutional case for adding non-US equities.</p>
+</div>
+
+<!-- ═══ 3. ASSET CLASS VIEWS ═══ -->
+<h2><span class="num">3</span> Asset Class Views</h2>
+
+<details open>
+  <summary>US Equities: SPLIT &mdash; Consensus Fracturing</summary>
+  <div class="detail-body">
+  <p>The most divisive asset class this month. The S&P 500 at 6,507 (NTM P/E ~18x) sits at the fault line between "earnings are still growing 12%" and "valuations are priced for perfection in a supply shock."</p>
+  <p><strong>Bulls:</strong> <a href="https://www.goldmansachs.com/insights/articles/the-sp-500-expected-to-rally-12-this-year">Goldman</a> (12% total return, target ~7,600) and <a href="https://www.cnbc.com/2026/03/16/stocks-may-struggle-into-early-april-then-rebound-morgan-stanley-says.html">Morgan Stanley</a> (target 7,800) argue earnings growth remains intact, AI capex is real spending generating real revenues, and the correction is a buying opportunity. Wilson sees another 5-7% downside before an April low, then resumption of the bull market. He recommends Financials, Consumer Discretionary, and Small/Mid-caps.</p>
+  <p><strong>Bears:</strong> <a href="https://www.advisorperspectives.com/commentaries/2026/03/17/gmo-forecast-february-2026">GMO</a> forecasts -6.0% real annual returns over 7 years &mdash; the worst of any major asset class. <a href="https://www.aqr.com/Insights/Research/Alternative-Thinking/2026-Capital-Market-Assumptions-for-Major-Asset-Classes">AQR</a> notes the narrowest risk premium of any major equity market. <a href="https://corporate.vanguard.com/content/corporatesite/us/en/corp/vemo/ai-exuberance-economic-upside-stock-market-downside.html">Vanguard</a> warns "AI exuberance" creates economic upside but stock market downside long-term, with high earnings expectations already priced in. <a href="https://www.hussmanfunds.com/category/comment/">Hussman</a> identifies this as the extended peak of "the third great speculative bubble in U.S. history" and warns of a "trap door" scenario &mdash; abrupt, cascading dislocation when risk-aversion meets a hypervalued market. BofA FMS shows fund managers at net 17% underweight.</p>
+  <p><strong>The smart disagreement:</strong> Is this an early-cycle dip (Morgan Stanley) or a late-cycle distribution under a supply shock (everyone else)? The answer likely depends on how long the Iran war lasts and whether oil stays above $100. TacSignal is neutral on US equities (composite -0.53), not supporting the OW case.</p>
+  </div>
+</details>
+
+<details>
+  <summary>International DM: Mild Overweight &mdash; Rotation In Progress</summary>
+  <div class="detail-body">
+  <p><a href="https://www.gmo.com/americas/research-library/year-end-letter-for-2025-deep-value_insights/">GMO's highest-conviction idea</a> is international deep value at +8.2% real annual returns &mdash; vs. -6% for US equities. BofA FMS: Eurozone net 21% OW, Japan swung from UW to net 14% OW. Goldman sees dollar weakness as a tailwind. BlackRock favors Japan for corporate governance reforms. Morgan Stanley dissents, expecting only +4% for MSCI Europe vs. +14% for the S&P.</p>
+  <p>TacSignal: Japan +1.53 (OW), Europe +0.27 (N). The quantitative model supports Japan but is more cautious on Europe. This aligns with BlackRock's selective view.</p>
+  </div>
+</details>
+
+<details>
+  <summary>EM Equities: Strong Overweight &mdash; Broadest Consensus</summary>
+  <div class="detail-body">
+  <p>The clearest consensus call across all sources. <a href="https://www.hedgefundtips.com/march-2026-bank-of-america-global-fund-manager-survey-results-summary/">BofA FMS</a>: net 53% overweight &mdash; highest since February 2021 and +1.6 standard deviations above historical average. Every firm with a stated view (BlackRock, JPM, Goldman, PIMCO, GMO, AQR) is overweight. Drivers: attractive valuations, higher earnings growth, AI hardware supply chain (Korea/Taiwan), commodity exposure, improving governance, and dollar weakness supporting returns.</p>
+  <p>TacSignal: EM +1.57 (OW), Asia-Pac +1.63 (OW). The quantitative model strongly confirms the institutional consensus. This is the highest-conviction cross-validated call in the entire outlook.</p>
+  </div>
+</details>
+
+<details>
+  <summary>Government Bonds: Split on Duration</summary>
+  <div class="detail-body">
+  <p><strong>5-10 year:</strong> <a href="https://www.pimco.com/us/en/insights/tariffs-technology-and-transition">PIMCO's</a> highest conviction &mdash; overweight intermediate duration. JPM and Vanguard agree. Starting yields of 4.37% on the 10-year provide meaningful income and potential capital gains if growth weakens. PIMCO describes this as a "rare opportunity to increase quality and liquidity without giving up equity-like return potential."</p>
+  <p><strong>30-year:</strong> PIMCO explicitly underweight. <a href="https://www.blackrock.com/corporate/insights/blackrock-investment-institute/publications/outlook">BlackRock</a> says long-term Treasuries no longer provide portfolio ballast in a supply-shock world &mdash; the 60/40 paradigm is broken. <a href="https://www.macrovoices.com/podcast-transcripts/1415-luke-gromen-trump-tariff-policy-will-drive-gold-even-higher">Gromen</a> argues the Treasury market can only function if the Fed eventually monetizes, making long bonds a poor inflation hedge.</p>
+  <p>TacSignal: US Bonds -0.06 (N). The model is flat &mdash; no directional conviction either way.</p>
+  </div>
+</details>
+
+<details>
+  <summary>Gold: Overweight But Crowded and Correcting</summary>
+  <div class="detail-body">
+  <p>The most complex call this month. Gold corrected 10% from ~$5,000 to $4,514 in a week &mdash; the worst week in four decades.</p>
+  <p><strong>Structural bull case:</strong> <a href="https://www.jpmorgan.com/insights/global-research/commodities/gold-prices">JPM ($5,000 target)</a> and <a href="https://uk.finance.yahoo.com/news/gold-price-oil-gold-commodities-pound-goldman-092315966.html">Goldman ($5,400)</a> cite central bank purchases (~60 tonnes/month), Western ETF inflows (~500 tonnes since early 2025), and the "debasement trade" by UHNW/family offices. <a href="https://www.macrovoices.com/podcast-transcripts/1415-luke-gromen-trump-tariff-policy-will-drive-gold-even-higher">Gromen</a> argues gold is being functionally repositioned as the "neutral reserve asset" in a post-dollar-hegemony world. <a href="https://www.realclearpolitics.com/video/2026/03/01/druckenmiller_portfolio_no_longer_ai-driven_bearish_on_dollar_at_historic_purchasing_power_peak.html">Druckenmiller</a> is long gold as a geopolitical hedge.</p>
+  <p><strong>Crowding risk:</strong> BofA FMS &mdash; "long gold" tied as the most crowded trade (35% of respondents). 38% now say gold is overvalued. The <a href="https://www.bis.org/publ/qtrpdf/r_qt2603a.pdf">BIS warned</a> gold "traded more like a risk asset than safe haven" &mdash; the correction was driven by leveraged position unwinds, not fundamental selling.</p>
+  <p><strong>Net read:</strong> Structurally bullish (JPM, GS, Gromen, Lyn Alden, Druckenmiller all aligned), tactically vulnerable (crowding + leverage unwind risk). The correction is a buying opportunity IF the de-dollarization thesis holds &mdash; which the weight of evidence says it does.</p>
+  <p>TacSignal: Gold +1.74 (OW). Quantitative momentum confirms the structural bullish case despite the tactical correction.</p>
+  </div>
+</details>
+
+<details>
+  <summary>Credit, Commodities, Crypto, Cash</summary>
+  <div class="detail-body">
+  <p><strong>Credit:</strong> OW with quality bias. <a href="https://am.gs.com/en-us/advisors/insights/article/market-pulse">Goldman</a>, <a href="https://am.jpmorgan.com/us/en/asset-management/adv/insights/portfolio-insights/asset-class-views/equity/">JPM</a>, and Morgan Stanley constructive. Strong fundamentals, low defaults. But 63% of FMS respondents cite private credit as top systemic risk. PIMCO warns skew is toward wider spreads.</p>
+  <p><strong>Commodities:</strong> BofA FMS net 34% OW (highest since Apr 2022). Oil at $112 driving allocation. JPM and Goldman do NOT see a commodity supercycle &mdash; copper/steel need synchronized global manufacturing. Energy (XLE) is the tactical play. TacSignal: Oil +3.28 (OW) &mdash; the strongest signal in the entire model.</p>
+  <p><strong>Crypto:</strong> BTC ~$70K consolidating. No major house has a stated view. <a href="https://www.lynalden.com/february-2026-newsletter/">Lyn Alden</a> is constructive on BTC as a global liquidity proxy. <a href="https://www.oaktreecapital.com/insights/memo/ai-hurtles-ahead">Howard Marks</a> warns on valuation discipline for all speculative assets.</p>
+  <p><strong>Cash:</strong> Strategic UW but tactical rebuild. FMS cash at 4.3% is the largest jump since March 2020. With positive real yields (Fed 3.5-3.75% vs. CPI 2.4%), holding cash is no longer punitive.</p>
+  </div>
+</details>
+
+<!-- ═══ 4. CONSENSUS MATRIX ═══ -->
+<h2><span class="num">4</span> Consensus Matrix</h2>
+
+<div style="overflow-x:auto">
+<table>
+  <thead>
+    <tr><th>Asset Class</th><th>BLK</th><th>VGD</th><th>PIMCO</th><th>JPM</th><th>GS</th><th>MS</th><th>FMS</th><th>Marks</th><th>GMO</th><th>AQR</th><th>TacSignal</th><th>Consensus</th></tr>
+  </thead>
+  <tbody>
+    <tr><td>US Equities</td><td class="ow">OW</td><td class="uw">UW</td><td class="na">&mdash;</td><td class="n">N</td><td class="ow">OW</td><td class="ow">OW</td><td class="uw">UW</td><td class="uw">UW</td><td class="uw">UW</td><td class="uw">UW</td><td class="n">N</td><td><span class="consensus-split">SPLIT</span></td></tr>
+    <tr><td>Intl DM</td><td class="n">N</td><td class="ow">OW</td><td class="na">&mdash;</td><td class="ow">OW</td><td class="ow">OW</td><td class="uw">UW</td><td class="n">N</td><td class="na">&mdash;</td><td class="ow">OW</td><td class="ow">OW</td><td class="ow">OW*</td><td><span class="consensus-bullish">BULLISH</span></td></tr>
+    <tr><td>EM Equities</td><td class="ow">OW</td><td class="na">&mdash;</td><td class="ow">OW</td><td class="ow">OW</td><td class="ow">OW</td><td class="na">&mdash;</td><td class="ow">OW</td><td class="na">&mdash;</td><td class="ow">OW</td><td class="ow">OW</td><td class="ow">OW</td><td><span class="consensus-bullish">BULLISH</span></td></tr>
+    <tr><td>Govt Bonds</td><td class="uw">UW</td><td class="ow">OW</td><td class="ow">OW</td><td class="ow">OW</td><td class="n">N</td><td class="n">N</td><td class="uw">UW</td><td class="na">&mdash;</td><td class="n">N</td><td class="n">N</td><td class="n">N</td><td><span class="consensus-split">SPLIT</span></td></tr>
+    <tr><td>Credit</td><td class="ow">OW</td><td class="ow">OW</td><td class="n">N</td><td class="ow">OW</td><td class="ow">OW</td><td class="ow">OW</td><td class="na">&mdash;</td><td class="na">&mdash;</td><td class="na">&mdash;</td><td class="na">&mdash;</td><td class="na">&mdash;</td><td><span class="consensus-bullish">BULLISH</span></td></tr>
+    <tr><td>Commodities</td><td class="na">&mdash;</td><td class="na">&mdash;</td><td class="na">&mdash;</td><td class="n">N</td><td class="n">N</td><td class="uw">UW</td><td class="ow">OW</td><td class="na">&mdash;</td><td class="na">&mdash;</td><td class="na">&mdash;</td><td class="ow">OW</td><td><span class="consensus-split">SPLIT</span></td></tr>
+    <tr><td>Gold</td><td class="na">&mdash;</td><td class="na">&mdash;</td><td class="na">&mdash;</td><td class="ow">OW</td><td class="ow">OW</td><td class="na">&mdash;</td><td class="ow">OW</td><td class="na">&mdash;</td><td class="na">&mdash;</td><td class="na">&mdash;</td><td class="ow">OW</td><td><span class="consensus-bullish">BULLISH</span></td></tr>
+    <tr><td>Cash</td><td class="na">&mdash;</td><td class="uw">UW</td><td class="uw">UW</td><td class="uw">UW</td><td class="uw">UW</td><td class="uw">UW</td><td class="ow">OW</td><td class="na">&mdash;</td><td class="na">&mdash;</td><td class="ow">OW</td><td class="na">&mdash;</td><td><span class="consensus-shifting">SHIFTING</span></td></tr>
+  </tbody>
+</table>
+</div>
+<p style="font-size:0.75rem;color:var(--text-dim)">
+  <span class="ow">OW</span> overweight &middot; <span class="n">N</span> neutral &middot; <span class="uw">UW</span> underweight &middot; <span class="na">&mdash;</span> no view &middot; TacSignal* = Japan OW, EU Neutral (shown as OW for regional aggregate)<br>
+  >60% OW = <span class="consensus-bullish">BULLISH</span> &middot; >60% UW = BEARISH &middot; else <span class="consensus-split">SPLIT</span> &middot; <span class="consensus-shifting">SHIFTING</span> = flipped from prior month
+</p>
+
+<!-- ═══ 4b. PRICE TARGETS ═══ -->
+<h2><span class="num">5</span> Institutional Price Targets &mdash; End 2026</h2>
+<p style="font-size:0.85rem;color:var(--text-muted);margin-bottom:1.25rem">Where the major firms expect key assets by year-end, versus current levels. Implied return shows the upside/downside to reach the target.</p>
+
+<table>
+  <thead>
+    <tr><th style="text-align:left">Asset</th><th>Current</th><th>Firm</th><th>Target</th><th>Implied</th><th>Source</th></tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td><strong>S&P 500</strong></td><td style="font-family:'Fira Code',mono">6,507</td>
+      <td style="color:var(--text-muted)">Goldman Sachs</td><td class="ow" style="font-family:'Fira Code',mono">7,600</td><td class="up">+16.8%</td>
+      <td><a href="https://www.goldmansachs.com/insights/articles/the-sp-500-expected-to-rally-12-this-year">GS Research</a></td>
+    </tr>
+    <tr>
+      <td><strong>S&P 500</strong></td><td style="font-family:'Fira Code',mono">6,507</td>
+      <td style="color:var(--text-muted)">Morgan Stanley</td><td class="ow" style="font-family:'Fira Code',mono">7,800</td><td class="up">+19.9%</td>
+      <td><a href="https://www.morganstanley.com/insights/podcasts/thoughts-on-the-market/us-equity-market-outlook-2026-mike-wilson">MS Wilson</a></td>
+    </tr>
+    <tr>
+      <td><strong>Gold ($/oz)</strong></td><td style="font-family:'Fira Code',mono">$4,514</td>
+      <td style="color:var(--text-muted)">JPMorgan</td><td class="ow" style="font-family:'Fira Code',mono">$5,000</td><td class="up">+10.8%</td>
+      <td><a href="https://www.jpmorgan.com/insights/global-research/commodities/gold-prices">JPM Gold</a></td>
+    </tr>
+    <tr>
+      <td><strong>Gold ($/oz)</strong></td><td style="font-family:'Fira Code',mono">$4,514</td>
+      <td style="color:var(--text-muted)">Goldman Sachs</td><td class="ow" style="font-family:'Fira Code',mono">$5,400</td><td class="up">+19.6%</td>
+      <td><a href="https://uk.finance.yahoo.com/news/gold-price-oil-gold-commodities-pound-goldman-092315966.html">GS Gold</a></td>
+    </tr>
+    <tr>
+      <td><strong>Brent Crude</strong></td><td style="font-family:'Fira Code',mono">$112</td>
+      <td style="color:var(--text-muted)">Goldman (Q4 base)</td><td style="font-family:'Fira Code',mono;color:var(--amber)">$71</td><td class="down">-36.6%</td>
+      <td><a href="https://www.thestreet.com/investing/goldman-sachs-resets-oil-price-target-for-rest-of-2026">GS Oil</a></td>
+    </tr>
+    <tr>
+      <td><strong>Brent Crude</strong></td><td style="font-family:'Fira Code',mono">$112</td>
+      <td style="color:var(--text-muted)">Goldman (Hormuz risk)</td><td style="font-family:'Fira Code',mono;color:var(--red)">$93</td><td class="down">-17.0%</td>
+      <td><a href="https://energynow.com/2026/03/goldman-sachs-raises-q4-brent-wti-crude-price-forecast-amid-longer-hormuz-disruption/">GS Oil Risk</a></td>
+    </tr>
+    <tr>
+      <td><strong>Bitcoin</strong></td><td style="font-family:'Fira Code',mono">$70,005</td>
+      <td style="color:var(--text-muted)">Std Chartered / Bernstein</td><td class="ow" style="font-family:'Fira Code',mono">$150,000</td><td class="up">+114%</td>
+      <td><a href="https://www.cnbc.com/2026/01/08/bitcoin-btc-price-predictions-for-2026.html">CNBC BTC</a></td>
+    </tr>
+    <tr>
+      <td><strong>Bitcoin</strong></td><td style="font-family:'Fira Code',mono">$70,005</td>
+      <td style="color:var(--text-muted)">JPMorgan (fair value)</td><td class="ow" style="font-family:'Fira Code',mono">$170,000</td><td class="up">+143%</td>
+      <td><a href="https://www.cnbc.com/2026/01/08/bitcoin-btc-price-predictions-for-2026.html">CNBC BTC</a></td>
+    </tr>
+    <tr>
+      <td><strong>Bitcoin</strong></td><td style="font-family:'Fira Code',mono">$70,005</td>
+      <td style="color:var(--text-muted)">Fidelity (bearish)</td><td style="font-family:'Fira Code',mono;color:var(--amber)">$65,000</td><td class="down">-7.1%</td>
+      <td><a href="https://www.cnbc.com/2026/01/08/bitcoin-btc-price-predictions-for-2026.html">CNBC BTC</a></td>
+    </tr>
+    <tr>
+      <td><strong>10Y UST Yield</strong></td><td style="font-family:'Fira Code',mono">4.37%</td>
+      <td style="color:var(--text-muted)">Goldman Sachs</td><td style="font-family:'Fira Code',mono;color:var(--text-muted)">4.40%</td><td class="flat">+3bp</td>
+      <td><a href="https://www.marketscreener.com/news/goldman-sachs-sees-10-year-treasury-yield-rising-on-above-trend-us-growth-ce7e58dadd81f224">GS Rates</a></td>
+    </tr>
+    <tr>
+      <td><strong>Fed Funds Rate</strong></td><td style="font-family:'Fira Code',mono">3.625%</td>
+      <td style="color:var(--text-muted)">Fed dot plot (median)</td><td style="font-family:'Fira Code',mono;color:var(--green)">3.40%</td><td class="up">-1 cut</td>
+      <td><a href="https://www.federalreserve.gov/monetarypolicy/files/fomcprojtabl20260318.pdf">FOMC SEP</a></td>
+    </tr>
+    <tr>
+      <td><strong>Fed Funds Rate</strong></td><td style="font-family:'Fira Code',mono">3.625%</td>
+      <td style="color:var(--text-muted)">CME Futures</td><td style="font-family:'Fira Code',mono;color:var(--green)">3.43%</td><td class="up">~1 cut</td>
+      <td><a href="https://www.cmegroup.com/markets/interest-rates/cme-fedwatch-tool.html">FedWatch</a></td>
+    </tr>
+    <tr>
+      <td><strong>US GDP 2026</strong></td><td style="font-family:'Fira Code',mono">&mdash;</td>
+      <td style="color:var(--text-muted)">Goldman Sachs</td><td style="font-family:'Fira Code',mono">2.2%</td><td class="flat">revised from 2.7%</td>
+      <td><a href="https://www.goldmansachs.com/insights/goldman-sachs-research/macro-outlook-2026-sturdy-growth-stagnant-jobs-stable-prices">GS Macro</a></td>
+    </tr>
+    <tr>
+      <td><strong>US Core PCE Dec</strong></td><td style="font-family:'Fira Code',mono">2.5%</td>
+      <td style="color:var(--text-muted)">Goldman Sachs</td><td style="font-family:'Fira Code',mono;color:var(--amber)">2.9%</td><td class="down">+0.4pp (revised up)</td>
+      <td><a href="https://www.thestreet.com/investing/goldman-sachs-resets-oil-price-target-for-rest-of-2026">GS Inflation</a></td>
+    </tr>
+    <tr>
+      <td><strong>Eurozone GDP 2026</strong></td><td style="font-family:'Fira Code',mono">&mdash;</td>
+      <td style="color:var(--text-muted)">ECB</td><td style="font-family:'Fira Code',mono;color:var(--amber)">0.9%</td><td class="down">cut from prior</td>
+      <td><a href="https://www.ecb.europa.eu/press/press_conference/monetary-policy/2026/html/ecb.is260319~93b1cbad97.en.html">ECB Mar 19</a></td>
+    </tr>
+  </tbody>
+</table>
+
+<div class="card">
+  <h4 style="margin-top:0;color:var(--purple)">GMO 7-Year Real Return Forecasts (annualized)</h4>
+  <p style="font-size:0.85rem;color:var(--text-muted)">Not price targets but expected real returns over 7 years &mdash; the most valuation-anchored framework available. <a href="https://www.advisorperspectives.com/commentaries/2026/03/17/gmo-forecast-february-2026">Source</a></p>
+  <table>
+    <thead><tr><th style="text-align:left">Asset Class</th><th>7yr Real Return/yr</th><th>Implication</th></tr></thead>
+    <tbody>
+      <tr><td>US Large Cap</td><td class="uw">-6.0%</td><td class="uw">Worst of any asset class</td></tr>
+      <tr><td>Intl Large Cap</td><td style="color:var(--amber)">-0.7%</td><td class="flat">Slightly negative</td></tr>
+      <tr><td>Intl Deep Value</td><td class="ow">+8.2%</td><td class="ow">GMO's #1 idea</td></tr>
+      <tr><td>Intl Small Cap</td><td class="ow">+2.5%</td><td class="up">Positive</td></tr>
+      <tr><td>EM Equities</td><td class="up">+1.0%</td><td class="up">Positive</td></tr>
+      <tr><td>EM Value</td><td class="ow">+3.8%</td><td class="ow">Cheapest globally</td></tr>
+      <tr><td>US Govt Bonds</td><td class="up">+1.3%</td><td class="up">Modest real return</td></tr>
+    </tbody>
+  </table>
+</div>
+
+<div class="card">
+  <h4 style="margin-top:0">Key Takeaway From Price Targets</h4>
+  <p>Goldman and Morgan Stanley both see 17-20% upside in the S&P 500 — but this requires earnings growth to persist through a supply shock, which is the core disagreement with bears. Gold targets ($5,000-5,400) imply 11-20% upside from current corrected levels. The most striking data point: Goldman's Q4 2026 base case for Brent is $71 (vs. $112 today) — meaning <strong>oil is priced for a war premium that Goldman expects to fade by 37%</strong>. If they're right, the stagflation narrative unwinds. If they're wrong and oil stays above $100, everything changes.</p>
+  <p>Bitcoin is the widest-range forecast: $65K (Fidelity bearish) to $250K (Hoskinson). At $70K today, the institutional consensus median (~$150K) implies over 100% upside — but with no near-term catalyst identified and extreme sentiment bearishness.</p>
+</div>
+
+<!-- ═══ 5. TACSIGNAL OVERLAY ═══ -->
+<h2><span class="num">6</span> TacSignal Tactical Overlay</h2>
+<p style="font-size:0.85rem;color:var(--text-muted)">Composite z-scores from <a href="https://github.com/bhfs-ag/TacSignal">TacSignal</a> (March 18, 2026). Values above +1.0 = OW, below -1.0 = UW. Bars show signal strength.</p>
+
+<div class="tac-row tac-header">
+  <span>Asset Class</span><span>Tech Z</span><span>Funda Z</span><span>Composite</span><span>Call</span><span>vs. Institutional</span>
+</div>
+<div class="tac-row">
+  <span><strong>Equity EM</strong></span><span class="ow">+1.57</span><span class="uw">-0.76</span><span class="ow">+1.57</span><span class="tac-call ow">OW</span><span class="ow">CONFIRMS</span>
+</div>
+<div class="tac-row">
+  <span><strong>Equity Japan</strong></span><span class="ow">+1.53</span><span class="uw">-1.17</span><span class="ow">+1.53</span><span class="tac-call ow">OW</span><span class="ow">CONFIRMS</span>
+</div>
+<div class="tac-row">
+  <span><strong>Equity Asia-Pac</strong></span><span class="ow">+1.63</span><span class="uw">-0.84</span><span class="ow">+1.63</span><span class="tac-call ow">OW</span><span class="ow">CONFIRMS</span>
+</div>
+<div class="tac-row">
+  <span><strong>Gold</strong></span><span class="ow">+1.74</span><span class="uw">-1.46</span><span class="ow">+1.74</span><span class="tac-call ow">OW</span><span class="ow">CONFIRMS</span>
+</div>
+<div class="tac-row">
+  <span><strong>Oil</strong></span><span class="ow" style="color:var(--orange)">+3.28</span><span class="uw">-3.59</span><span class="ow" style="color:var(--orange)">+3.28</span><span class="tac-call ow">OW</span><span style="color:var(--amber)">SPLIT (FMS OW, JPM/GS N)</span>
+</div>
+<div class="tac-row">
+  <span><strong>Equity U.S.</strong></span><span class="uw">-0.53</span><span class="ow">+1.88</span><span class="n">-0.53</span><span class="tac-call n">N</span><span class="flat">CONSISTENT (SPLIT)</span>
+</div>
+<div class="tac-row">
+  <span><strong>Equity EU</strong></span><span class="n">+0.27</span><span class="n">+0.16</span><span class="n">+0.27</span><span class="tac-call n">N</span><span style="color:var(--amber)">DIVERGES (inst. OW)</span>
+</div>
+<div class="tac-row">
+  <span><strong>Bond U.S.</strong></span><span class="n">+0.07</span><span class="n">-0.06</span><span class="n">-0.06</span><span class="tac-call n">N</span><span class="flat">CONSISTENT (SPLIT)</span>
+</div>
+<div class="tac-row">
+  <span><strong>Euro (currency)</strong></span><span class="uw">-1.89</span><span class="ow">+1.52</span><span class="uw">-1.89</span><span class="tac-call uw">UW</span><span style="color:var(--amber)">DIVERGES (contrarians: USD bearish)</span>
+</div>
+<div class="tac-row">
+  <span><strong>U.S. Dollar</strong></span><span class="n">-0.59</span><span class="n">+0.56</span><span class="n">-0.59</span><span class="tac-call n">N</span><span class="flat">Leaning bearish (contrarians agree)</span>
+</div>
+
+<div class="card" style="margin-top:1rem">
+  <h4 style="color:var(--green);margin-top:0">Where TacSignal + Institutional Consensus Agree (Highest Conviction)</h4>
+  <p>EM equities, Japan, Asia-Pac, and gold all have both quantitative tactical signals and institutional consensus pointing the same direction. This cross-validation significantly increases conviction.</p>
+  <h4 style="color:var(--amber)">Notable Divergences</h4>
+  <p><strong>European equities:</strong> TacSignal is neutral (+0.27) while several institutions are OW. Momentum hasn't confirmed the rotation thesis yet. This suggests patience &mdash; wait for technical confirmation before sizing up Europe.</p>
+  <p><strong>Euro currency:</strong> TacSignal is strongly UW (-1.89) while contrarian voices expect USD weakness (i.e., EUR strength). This is a genuine signal conflict. TacSignal's technical momentum shows EUR weakness; the contrarians are making a structural, multi-year call. Both can be right at different timeframes.</p>
+</div>
+
+<!-- ═══ 6. THEMATIC SPOTLIGHT ═══ -->
+<h2><span class="num">7</span> Thematic Spotlight</h2>
+
+<div class="card">
+  <h3 style="margin-top:0">The Stagflation Trade Is On</h3>
+  <p>For the first time since 2022, stagflation is the dominant macro framework. BofA FMS shows 51% of managers pricing below-trend growth + above-trend inflation. The rotation is decisive: out of US equities and growth, into commodities, gold, EM, and cash. <a href="https://www.blackrock.com/corporate/insights/blackrock-investment-institute/publications/outlook">BlackRock explicitly says</a> the 60/40 paradigm is broken in a supply-shock world. PIMCO and Vanguard still believe bonds provide diversification, but only at intermediate durations &mdash; not long-end.</p>
+  <p style="color:var(--cyan)"><strong>Contrarian counter:</strong> <a href="https://www.cnbc.com/2026/03/16/stocks-may-struggle-into-early-april-then-rebound-morgan-stanley-says.html">Morgan Stanley</a> says this is NOT stagflation &mdash; it's an early-cycle correction. If oil falls below $90 on a ceasefire, the entire narrative unwinds rapidly. AAII bearish sentiment at 46.4% and CNN Fear & Greed at "Extreme Fear" are historically contrarian bullish signals.</p>
+</div>
+
+<div class="card">
+  <h3 style="margin-top:0">The Great Rotation From US Exceptionalism</h3>
+  <p>Fund managers are rotating out of US equities at the fastest pace on record, into EM (53% OW &mdash; 5-year high), Japan, and commodities. <a href="https://www.advisorperspectives.com/commentaries/2026/03/17/gmo-forecast-february-2026">GMO's 7-year forecast</a>: US -6% real/yr vs. international deep value +8.2%. The rotation extends beyond equities &mdash; <a href="https://uk.finance.yahoo.com/news/gold-price-oil-gold-commodities-pound-goldman-092315966.html">Goldman's gold call ($5,400)</a> and the debasement trade thesis mean the entire USD-denominated financial system is being repriced. <a href="https://www.realclearpolitics.com/video/2026/03/01/druckenmiller_portfolio_no_longer_ai-driven_bearish_on_dollar_at_historic_purchasing_power_peak.html">Druckenmiller</a> has rotated his portfolio away from AI into financials (XLF), copper, gold &mdash; and calls this the best macro opportunity set in 10-15 years.</p>
+  <p style="color:var(--cyan)"><strong>Contrarian counter:</strong> US earnings growth is 12%+. AI capex is real spending generating real revenues. The US private sector is healthier than any other region. Betting against US equities has been a losing trade for 15 years.</p>
+</div>
+
+<!-- ═══ 7. RISK RADAR ═══ -->
+<h2><span class="num">8</span> Risk Radar</h2>
+
+<table>
+  <thead><tr><th style="text-align:left">Risk</th><th>Probability</th><th>Impact</th><th>Flagged By</th></tr></thead>
+  <tbody>
+    <tr><td><strong>Iran war escalation / oil >$120</strong></td><td style="color:var(--red)">Mod-High</td><td style="color:var(--red)">Severe</td><td style="color:var(--text-muted)">BofA FMS (37%), BIS, all desks</td></tr>
+    <tr><td><strong>Stagflation crystallizes</strong></td><td style="color:var(--amber)">Moderate</td><td style="color:var(--red)">High</td><td style="color:var(--text-muted)">BofA FMS (51%), PIMCO, BlackRock</td></tr>
+    <tr><td><strong>Private credit systemic event</strong></td><td style="color:var(--amber)">Low-Mod</td><td style="color:var(--red)">Severe</td><td style="color:var(--text-muted)">BofA FMS (63% cite as #1 credit risk)</td></tr>
+    <tr><td><strong>AI valuation reset / IPO pipeline</strong></td><td style="color:var(--amber)">Moderate</td><td style="color:var(--red)">High</td><td style="color:var(--text-muted)"><a href="https://www.gmo.com/globalassets/articles/events/2026/gmo_top-market-predictions-for-2026_1-7-26.pdf">GMO</a>, <a href="https://www.oaktreecapital.com/insights/memo/ai-hurtles-ahead">Marks</a>, Vanguard</td></tr>
+    <tr><td><strong>Non-linear crash ("trap door")</strong></td><td style="color:var(--text-dim)">Low</td><td style="color:var(--red)">Severe</td><td style="color:var(--text-muted)"><a href="https://www.hussmanfunds.com/category/comment/">Hussman</a></td></tr>
+    <tr><td><strong>Capital war &mdash; foreign USD dump</strong></td><td style="color:var(--text-dim)">Low</td><td style="color:var(--red)">Catastrophic</td><td style="color:var(--text-muted)"><a href="https://www.bridgewater.com/research-and-insights">Bridgewater/Dalio</a></td></tr>
+    <tr><td><strong>Fed independence erosion</strong></td><td style="color:var(--text-dim)">Low</td><td style="color:var(--red)">Severe</td><td style="color:var(--text-muted)">PIMCO; Warsh succession</td></tr>
+  </tbody>
+</table>
+
+<div class="card">
+  <strong style="color:var(--green)">What would change the base case:</strong> An Iran ceasefire collapsing oil to $80-90 would instantly unwind the stagflation narrative, restore rate-cut expectations, and likely trigger a sharp equity rally. This is the most binary risk on the board &mdash; and the single most important thing to watch over the next 30 days.
+</div>
+
+<!-- ═══ 8. ACTION IMPLICATIONS ═══ -->
+<h2><span class="num">9</span> Action Implications</h2>
+
+<h3>HIGH Conviction (consensus + stops + behavioral model + TacSignal align)</h3>
+
+<div class="action-card action-high">
+  <div class="action-header"><span class="action-ticker">COPX &mdash; REDUCE (exit half)</span><span class="action-badge badge-high">HIGH</span></div>
+  <div class="action-detail"><strong>Position:</strong> -23.6%, 8.1% of portfolio. Stop breached.</div>
+  <div class="action-detail"><strong>Consensus:</strong> SPLIT/UW on industrial metals. JPM and GS say no supercycle. BofA FMS does not show copper as a favored commodity.</div>
+  <div class="action-detail"><strong>Behavioral:</strong> Averaging down (Factor 7) + Disposition effect (Factor 1). Added in Jan while already losing.</div>
+  <div class="action-detail"><strong>TacSignal:</strong> No copper-specific signal. Oil is OW but industrial metals lack the demand catalyst.</div>
+  <div class="counter-case">Counter: <a href="https://www.realclearpolitics.com/video/2026/03/01/druckenmiller_portfolio_no_longer_ai-driven_bearish_on_dollar_at_historic_purchasing_power_peak.html">Druckenmiller is long copper</a> (supply constraint thesis, high conviction). Gromen/Lyn Alden argue supercycle intact. The contrarian case is not empty &mdash; but your stop rules still apply.</div>
+</div>
+
+<div class="action-card action-high">
+  <div class="action-header"><span class="action-ticker">IBIT &mdash; REDUCE (exit half)</span><span class="action-badge badge-high">HIGH</span></div>
+  <div class="action-detail"><strong>Position:</strong> -23.8%, 4.7% of portfolio. 15% trailing stop breached.</div>
+  <div class="action-detail"><strong>Consensus:</strong> No institutional house has a stated view on crypto. Zero support to override your stops.</div>
+  <div class="action-detail"><strong>Behavioral:</strong> Disposition effect (Factor 1). Holding a breached stop = the disposition effect in real time.</div>
+  <div class="counter-case">Counter: Halving cycle thesis suggests H2 2026 rally. <a href="https://www.lynalden.com/february-2026-newsletter/">Lyn Alden</a> is constructive on BTC as a liquidity proxy. But hoping for a catalyst while sitting on a breached stop is exactly the pattern your behavioral model flags.</div>
+</div>
+
+<h3>MODERATE Conviction (two of three signals align)</h3>
+
+<div class="action-card action-moderate">
+  <div class="action-header"><span class="action-ticker">Precious Metals &mdash; TRIM to 30%</span><span class="action-badge badge-moderate">MOD</span></div>
+  <div class="action-detail"><strong>Position:</strong> 44% of portfolio in GLDM/GDX/SLV/BTGD/GSD. Way above any institutional allocation.</div>
+  <div class="action-detail"><strong>Consensus:</strong> Structurally OW, but most crowded trade (35%). 38% say overvalued. BIS: leveraged unwind risk.</div>
+  <div class="action-detail"><strong>Behavioral:</strong> Concentration + Performance chasing (F6, buying after 85% gold run) + Recency bias (F8).</div>
+  <div class="action-detail"><strong>TacSignal:</strong> Gold +1.74 (OW) confirms direction, but doesn't justify 44% concentration.</div>
+  <div class="counter-case">Counter: JPM $5K and GS $5,400 targets = 10-20% upside from $4,514. Central bank buying is structural. Trimming risks selling the dip in a secular bull. But 44% is not an allocation &mdash; it's a bet.</div>
+</div>
+
+<div class="action-card action-moderate">
+  <div class="action-header"><span class="action-ticker">ADD &mdash; International DM Equities</span><span class="action-badge badge-moderate">MOD</span></div>
+  <div class="action-detail"><strong>Current:</strong> Only EUAD at 2.6%. Zero broad intl DM.</div>
+  <div class="action-detail"><strong>Consensus:</strong> BULLISH. GMO's #1 idea (+8.2% real/yr). BofA FMS OW. Goldman sees dollar weakness as tailwind.</div>
+  <div class="action-detail"><strong>Behavioral:</strong> Diversification deficit (Factor 3, score 1.0 &mdash; your worst factor). Home bias toward US + commodities.</div>
+  <div class="action-detail"><strong>TacSignal:</strong> Japan OW (+1.53), EU neutral (+0.27). Consider Japan-focused ETFs for strongest signal alignment.</div>
+  <div class="counter-case">Counter: Morgan Stanley prefers US. Europe faces energy headwinds from Iran war. TacSignal hasn't confirmed EU momentum yet.</div>
+</div>
+
+<div class="action-card action-moderate">
+  <div class="action-header"><span class="action-ticker">ADD &mdash; Intermediate Bonds (5-10yr)</span><span class="action-badge badge-moderate">MOD</span></div>
+  <div class="action-detail"><strong>Current:</strong> Zero fixed income. 10Y at 4.37%.</div>
+  <div class="action-detail"><strong>Consensus:</strong> <a href="https://www.pimco.com/us/en/insights/tariffs-technology-and-transition">PIMCO</a>, <a href="https://corporate.vanguard.com/content/corporatesite/us/en/corp/vemo/ai-exuberance-economic-upside-stock-market-downside.html">Vanguard</a>, <a href="https://am.jpmorgan.com/us/en/asset-management/adv/insights/portfolio-insights/asset-class-views/equity/">JPM</a> all OW 5-10yr duration.</div>
+  <div class="action-detail"><strong>Behavioral:</strong> Diversification deficit (F3). Zero bonds + 44% metals = extreme portfolio construction.</div>
+  <div class="action-detail"><strong>TacSignal:</strong> US Bonds -0.06 (flat neutral). No momentum support, but income case is strong at 4.37%.</div>
+  <div class="counter-case">Counter: BlackRock says bonds no longer provide ballast in supply shocks. Rates could rise if March CPI spikes to 3.3%. Wait for inflation data?</div>
+</div>
+
+<h3>LOW Conviction</h3>
+
+<div class="action-card action-low">
+  <div class="action-header"><span class="action-ticker">AMZN &mdash; WATCH</span><span class="action-badge badge-low">LOW</span></div>
+  <div class="action-detail">-16.9%, approaching 20% stop. Hold unless stop triggers. Earnings strong, cloud/AI spending intact.</div>
+</div>
+
+<div class="action-card action-low">
+  <div class="action-header"><span class="action-ticker">XLE &mdash; HOLD</span><span class="action-badge badge-low">LOW</span></div>
+  <div class="action-detail">+5.2%, well-sized, aligned with macro. TacSignal Oil +3.28 (strongest signal). Consider trailing stop for ceasefire risk.</div>
+</div>
+
+<!-- ═══ KEY TAKEAWAYS ═══ -->
+<h2 style="border-bottom:2px solid var(--orange)"><span class="num">10</span> Key Takeaways</h2>
+
+<div class="card" style="border:1px solid var(--orange); background: linear-gradient(135deg, #1a0f00 0%, var(--card) 100%);">
+
+<h4 style="color:var(--orange);margin-top:0">1. Your gold thesis is right. Your sizing is wrong.</h4>
+<p>Every structural voice (JPM, Goldman, Gromen, Lyn Alden, Druckenmiller) agrees gold is in a secular bull driven by de-dollarization and central bank buying. But at 44% of your portfolio, you're running a concentration bet that no institutional investor would take. The BIS showed this week that gold trades like a risk asset when leverage unwinds &mdash; your 10% drawdown in one week is what concentration does. <strong>Trim to 30%, keep the thesis, reduce the fragility.</strong></p>
+
+<h4 style="color:var(--orange)">2. The most important number in this report: Goldman's Q4 Brent target is $71.</h4>
+<p>Oil is at $112. Goldman says $71 by Q4 &mdash; a 37% war premium that fades. If they're right, the stagflation narrative collapses, rate cuts return, and equities rally hard. If they're wrong and oil stays above $100, stagflation becomes the base case and your commodity-heavy portfolio outperforms. <strong>This is the single most binary variable for your portfolio over the next 3-6 months.</strong> Watch the Iran situation above everything else.</p>
+
+<h4 style="color:var(--orange)">3. You're missing the highest-conviction consensus trade: EM equities.</h4>
+<p>Every single firm with a view is overweight EM. BofA FMS at 53% OW &mdash; 5-year high. TacSignal confirms at +1.57. GMO sees it as one of the cheapest asset classes globally. You have NU (2.9%) and KSA (2.4%) but no broad EM exposure. <strong>This is the easiest gap to fill and the one with the most cross-validation behind it.</strong></p>
+
+<h4 style="color:var(--orange)">4. Your behavioral model is flashing on exactly the positions the research says to cut.</h4>
+<p>COPX (-23.6%, stop breached, averaging down, consensus UW) and IBIT (-23.8%, stop breached, no institutional support) are textbook disposition effect. Your behavioral model scores you 0.697 on disposition &mdash; and these two positions are why. The research gives you external permission to follow your own stop rules. <strong>The Druckenmiller copper long is the only credible counter-argument, but he didn't buy at -23.6% with a breached stop.</strong></p>
+
+<h4 style="color:var(--orange)">5. The dollar bear thesis is unanimous &mdash; and you're 93% exposed.</h4>
+<p>Dalio, Druckenmiller, Lyn Alden, Gromen, and the BIS all see structural dollar weakness. Your 92.9% USD exposure and zero international DM equities means you're implicitly long the one thing the contrarian consensus is most bearish on. <strong>Adding international equities (especially Japan, where TacSignal is OW at +1.53) simultaneously fixes your diversification deficit (Factor 3, score 1.0) and positions you for the dollar decline trade.</strong></p>
+
+<div style="margin-top:1.5rem;padding-top:1rem;border-top:1px solid var(--orange)33">
+<h4 style="color:var(--text-bright);margin-top:0">The Meta-Takeaway</h4>
+<p style="margin-bottom:0">Your instincts on the macro (gold, commodities, real assets) are directionally aligned with the best institutional and independent thinkers. The problem isn't the thesis &mdash; it's the portfolio construction. Too concentrated, too few asset classes, stops not being honored. The gap between having a good macro view and expressing it well in a portfolio is exactly what your behavioral model measures &mdash; and it's what's costing you.</p>
+</div>
+
+</div>
+
+<!-- ═══ 9. SOURCE LIBRARY ═══ -->
+<h2><span class="num">11</span> Source Library</h2>
+<p style="font-size:0.85rem;color:var(--text-muted)">Full reports and research pages. Click to read the originals.</p>
+
+<h3>Tier 1 &mdash; Institutional</h3>
+<div class="source-grid">
+  <div class="source-item"><span class="s-tier">T1</span><div class="s-name"><a href="https://www.blackrock.com/us/individual/insights/blackrock-investment-institute/weekly-commentary">BlackRock Investment Institute</a></div><div class="s-desc">Weekly commentary + <a href="https://www.blackrock.com/corporate/insights/blackrock-investment-institute/publications/outlook">2026 Global Outlook</a></div></div>
+  <div class="source-item"><span class="s-tier">T1</span><div class="s-name"><a href="https://corporate.vanguard.com/content/corporatesite/us/en/corp/vemo/ai-exuberance-economic-upside-stock-market-downside.html">Vanguard Economic Outlook</a></div><div class="s-desc">"AI Exuberance: Economic Upside, Stock Market Downside"</div></div>
+  <div class="source-item"><span class="s-tier">T1</span><div class="s-name"><a href="https://www.pimco.com/us/en/insights/tariffs-technology-and-transition">PIMCO Cyclical Outlook</a></div><div class="s-desc">"Tariffs, Technology, and Transition" (Jan 2026)</div></div>
+  <div class="source-item"><span class="s-tier">T1</span><div class="s-name"><a href="https://am.jpmorgan.com/us/en/asset-management/adv/insights/market-insights/guide-to-the-markets/">JPM Guide to the Markets</a></div><div class="s-desc">Q1 2026 + <a href="https://www.jpmorgan.com/insights/global-research/commodities/gold-prices">Gold Price Predictions</a></div></div>
+  <div class="source-item"><span class="s-tier">T1</span><div class="s-name"><a href="https://www.goldmansachs.com/insights/articles/the-sp-500-expected-to-rally-12-this-year">Goldman Sachs Research</a></div><div class="s-desc"><a href="https://www.goldmansachs.com/insights/goldman-sachs-research/macro-outlook-2026-sturdy-growth-stagnant-jobs-stable-prices">Macro Outlook</a> + <a href="https://am.gs.com/en-us/advisors/insights/article/market-pulse">Market Pulse Mar 2026</a></div></div>
+  <div class="source-item"><span class="s-tier">T1</span><div class="s-name"><a href="https://www.morganstanley.com/insights/podcasts/thoughts-on-the-market/us-equity-market-outlook-2026-mike-wilson">Morgan Stanley (Wilson)</a></div><div class="s-desc"><a href="https://www.cnbc.com/2026/03/16/stocks-may-struggle-into-early-april-then-rebound-morgan-stanley-says.html">CNBC Mar 16</a> + <a href="https://www.morganstanley.com/im/publication/insights/articles/43274.pdf">Q1 2026 BEAT</a></div></div>
+  <div class="source-item"><span class="s-tier">T1</span><div class="s-name"><a href="https://www.hedgefundtips.com/march-2026-bank-of-america-global-fund-manager-survey-results-summary/">BofA Fund Manager Survey</a></div><div class="s-desc">March 2026 &mdash; 210 managers, $589B AUM</div></div>
+  <div class="source-item"><span class="s-tier">T1</span><div class="s-name"><a href="https://www.oaktreecapital.com/insights/memo/ai-hurtles-ahead">Howard Marks / Oaktree</a></div><div class="s-desc">"AI Hurtles Ahead" memo (Feb 26, 2026)</div></div>
+  <div class="source-item"><span class="s-tier">T1</span><div class="s-name"><a href="https://www.advisorperspectives.com/commentaries/2026/03/17/gmo-forecast-february-2026">GMO 7-Year Forecasts</a></div><div class="s-desc"><a href="https://www.gmo.com/globalassets/articles/events/2026/gmo_top-market-predictions-for-2026_1-7-26.pdf">Top Predictions 2026</a> + <a href="https://www.gmo.com/americas/research-library/year-end-letter-for-2025-deep-value_insights/">Deep Value Letter</a></div></div>
+  <div class="source-item"><span class="s-tier">T1</span><div class="s-name"><a href="https://www.aqr.com/Insights/Research/Alternative-Thinking/2026-Capital-Market-Assumptions-for-Major-Asset-Classes">AQR Capital Market Assumptions</a></div><div class="s-desc">2026 CMA for Major Asset Classes (Jan 14)</div></div>
+</div>
+
+<h3>Tier 2 &mdash; Independent / Contrarian</h3>
+<div class="source-grid">
+  <div class="source-item"><span class="s-tier">T2</span><div class="s-name"><a href="https://www.bridgewater.com/research-and-insights">Bridgewater / Ray Dalio</a></div><div class="s-desc">Capital wars thesis, modern mercantilism</div></div>
+  <div class="source-item"><span class="s-tier">T2</span><div class="s-name"><a href="https://www.hussmanfunds.com/category/comment/">Hussman Weekly Comment</a></div><div class="s-desc">"Equilibrium and the Dentist in Poughkeepsie" (Mar 13)</div></div>
+  <div class="source-item"><span class="s-tier">T2</span><div class="s-name"><a href="https://www.lynalden.com/february-2026-newsletter/">Lyn Alden Newsletter</a></div><div class="s-desc">"The Gradual Print is Here" (Feb 2026)</div></div>
+  <div class="source-item"><span class="s-tier">T2</span><div class="s-name"><a href="https://www.macrovoices.com/podcast-transcripts/1415-luke-gromen-trump-tariff-policy-will-drive-gold-even-higher">Luke Gromen / FFTT</a></div><div class="s-desc">MacroVoices + Tucker Carlson transcript</div></div>
+  <div class="source-item"><span class="s-tier">T2</span><div class="s-name"><a href="https://www.realclearpolitics.com/video/2026/03/01/druckenmiller_portfolio_no_longer_ai-driven_bearish_on_dollar_at_historic_purchasing_power_peak.html">Stanley Druckenmiller</a></div><div class="s-desc"><a href="https://www.morganstanley.com/insights/videos/hard-lessons/duquesne-stan-druckenmiller-iliana-bouzali">MS "Hard Lessons"</a> + <a href="https://247wallst.com/investing/2026/03/04/stanley-druckenmiller-backed-up-the-truck-on-this-wildly-popular-etf/">XLF position</a></div></div>
+</div>
+
+<h3>Tier 3 &mdash; Data & Central Banks</h3>
+<div class="source-grid">
+  <div class="source-item"><span class="s-tier">T3</span><div class="s-name"><a href="https://www.bis.org/publ/qtrpdf/r_qt2603.htm">BIS Quarterly Review</a></div><div class="s-desc">March 2026 &mdash; <a href="https://www.bis.org/publ/qtrpdf/r_qt2603a.pdf">Markets section PDF</a></div></div>
+  <div class="source-item"><span class="s-tier">T3</span><div class="s-name"><a href="https://www.cnbc.com/2026/03/18/fed-interest-rate-decision-march-2026.html">Federal Reserve FOMC</a></div><div class="s-desc">Mar 18 &mdash; <a href="https://www.federalreserve.gov/monetarypolicy/files/fomcprojtabl20260318.pdf">SEP / Dot Plot</a></div></div>
+  <div class="source-item"><span class="s-tier">T3</span><div class="s-name"><a href="https://www.ecb.europa.eu/press/press_conference/monetary-policy/2026/html/ecb.is260319~93b1cbad97.en.html">ECB Monetary Policy</a></div><div class="s-desc">Mar 19 &mdash; held at 2.0%, raised inflation forecast</div></div>
+  <div class="source-item"><span class="s-tier">T3</span><div class="s-name"><a href="https://www.cmegroup.com/markets/interest-rates/cme-fedwatch-tool.html">CME FedWatch</a></div><div class="s-desc">Real-time rate cut probabilities</div></div>
+  <div class="source-item"><span class="s-tier">T3</span><div class="s-name"><a href="https://www.aaii.com/sentimentsurvey">AAII Sentiment Survey</a></div><div class="s-desc">Weekly investor sentiment</div></div>
+  <div class="source-item"><span class="s-tier">T3</span><div class="s-name"><a href="https://www.cnn.com/markets/fear-and-greed">CNN Fear & Greed Index</a></div><div class="s-desc">Multi-factor market sentiment</div></div>
+</div>
+
+<!-- ═══ FOOTER ═══ -->
+<div class="footer">
+  <p>This is a personal research synthesis, not investment advice. All views attributed to their respective sources. Action implications are institutional consensus implications &mdash; the decision remains with the portfolio owner.</p>
+  <p style="margin-top:0.5rem">Generated by Claude Opus 4.6 &middot; YaInvest Institutional Outlook v2 &middot; TacSignal overlay from <a href="https://github.com/bhfs-ag/TacSignal">BhFS TacSignal</a></p>
+</div>
+
+</body>
+</html>

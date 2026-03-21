@@ -1,0 +1,24 @@
+# macOS
+.DS_Store
+
+# Claude Code
+.claude/
+.superpowers/
+
+# Database (too large for GitHub, contains personal data)
+portfolio.db
+
+# Raw IBKR data (personal financial data)
+ibkr/
+
+# PDF reports (large, personal)
+*.pdf
+
+# Excel files (personal data)
+*.xlsx
+
+# Node modules
+node_modules/
+
+# Temporary files
+/tmp/

@@ -1,0 +1,18 @@
+{
+  "AAPL": "us_equities",
+  "AMZN": "us_equities",
+  "COPX": "commodities_industrial_metals",
+  "GLD": "gold",
+  "SGOL": "gold",
+  "IBIT": "crypto",
+  "HGT": "commodities_industrial_metals",
+  "VT": "intl_dm",
+  "SPY": "us_equities",
+  "BTGD": "gold",
+  "SQN": "us_equities",
+  "PLTR": "us_equities",
+  "ARKK": "us_equities",
+  "SMT": "us_equities",
+  "BILI": "em_equities",
+  "BIDU": "em_equities"
+}
