@@ -3,8 +3,8 @@
     "month": "2026-03",
     "generated": "2026-03-21",
     "schema_version": "1.0",
-    "sources_consulted": 17,
-    "sources_available": 17
+    "sources_consulted": 21,
+    "sources_available": 21
   },
   "regime": {
     "cycle_phase": "late_cycle",
@@ -70,7 +70,7 @@
         "jpm": "OW",
         "goldman": "OW",
         "morgan_stanley": "UW",
-        "bofa_fms": "N",
+        "bofa_fms": "OW",
         "marks": null,
         "gmo": "OW",
         "aqr": "OW"
@@ -124,14 +124,14 @@
         "jpm": "OW",
         "goldman": "OW",
         "morgan_stanley": "OW",
-        "bofa_fms": null,
+        "bofa_fms": "N/UW",
         "marks": null,
         "gmo": null,
         "aqr": null
       },
-      "consensus": "BULLISH",
-      "agreement_score": 0.83,
-      "conviction": "HIGH"
+      "consensus": "SPLIT",
+      "agreement_score": 0.57,
+      "conviction": "LOW"
     },
     {
       "asset_class": "commodities_energy",
@@ -214,10 +214,10 @@
         "jpm": "UW",
         "goldman": "UW",
         "morgan_stanley": "UW",
-        "bofa_fms": "OW",
+        "bofa_fms": "N",
         "marks": null,
         "gmo": null,
-        "aqr": "OW"
+        "aqr": "N/OW"
       },
       "consensus": "SHIFTING",
       "agreement_score": 0.29,
@@ -280,6 +280,18 @@
       "probability": "low",
       "impact": "catastrophic",
       "flagged_by": ["bridgewater", "dalio"]
+    },
+    {
+      "risk": "Fed rate HIKES (not just fewer cuts)",
+      "probability": "low_moderate",
+      "impact": "high",
+      "flagged_by": ["bofa_bhave"]
+    },
+    {
+      "risk": "LNG supply disruption — Qatar strikes take 12.8 MTA offline for 3-5 years",
+      "probability": "moderate",
+      "impact": "high",
+      "flagged_by": ["bofa_salisbury"]
     }
   ],
   "portfolio_alignment": {
