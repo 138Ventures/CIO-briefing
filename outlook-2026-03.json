@@ -1,0 +1,397 @@
+{
+  "meta": {
+    "month": "2026-03",
+    "generated": "2026-03-21",
+    "schema_version": "1.0",
+    "sources_consulted": 17,
+    "sources_available": 17
+  },
+  "regime": {
+    "cycle_phase": "late_cycle",
+    "risk_appetite": "risk_off",
+    "growth": "decelerating",
+    "inflation": "re_accelerating",
+    "liquidity": "tightening",
+    "fed_stance": "hawkish_hold",
+    "regime_change_vs_prior": false
+  },
+  "market_data": {
+    "as_of": "2026-03-20",
+    "sp500": 6507,
+    "sp500_ytd_pct": -3.22,
+    "vt_ytd_pct": -1.07,
+    "vix": 26.79,
+    "ust_10y": 4.37,
+    "ust_2y": 3.90,
+    "ust_10y_2y_spread_bps": 47,
+    "fed_funds_rate": "3.50-3.75",
+    "cpi_yoy": 2.4,
+    "core_cpi_yoy": 2.5,
+    "ppi_yoy": 3.4,
+    "gold_usd": 4514,
+    "btc_usd": 70005,
+    "dxy": 99.41,
+    "brent_crude": 112.19,
+    "cnn_fear_greed": "extreme_fear",
+    "aaii_bullish": 30.4,
+    "aaii_bearish": 46.4,
+    "bofa_fms_cash_pct": 4.3,
+    "bofa_fms_sentiment": 5.6,
+    "fedwatch_next_cut": "September 2026",
+    "fedwatch_june_cut_prob": 18.4,
+    "fedwatch_dec_cut_prob": 60.5,
+    "fedwatch_implied_yearend_rate": 3.43
+  },
+  "consensus_matrix": [
+    {
+      "asset_class": "us_equities",
+      "views": {
+        "blackrock": "OW",
+        "vanguard": "UW",
+        "pimco": null,
+        "jpm": "N",
+        "goldman": "OW",
+        "morgan_stanley": "OW",
+        "bofa_fms": "UW",
+        "marks": "UW",
+        "gmo": "UW",
+        "aqr": "UW"
+      },
+      "consensus": "SPLIT",
+      "agreement_score": 0.33,
+      "conviction": "LOW"
+    },
+    {
+      "asset_class": "intl_dm",
+      "views": {
+        "blackrock": "N",
+        "vanguard": "OW",
+        "pimco": null,
+        "jpm": "OW",
+        "goldman": "OW",
+        "morgan_stanley": "UW",
+        "bofa_fms": "N",
+        "marks": null,
+        "gmo": "OW",
+        "aqr": "OW"
+      },
+      "consensus": "BULLISH",
+      "agreement_score": 0.63,
+      "conviction": "MODERATE"
+    },
+    {
+      "asset_class": "em_equities",
+      "views": {
+        "blackrock": "OW",
+        "vanguard": null,
+        "pimco": "OW",
+        "jpm": "OW",
+        "goldman": "OW",
+        "morgan_stanley": null,
+        "bofa_fms": "OW",
+        "marks": null,
+        "gmo": "OW",
+        "aqr": "OW"
+      },
+      "consensus": "BULLISH",
+      "agreement_score": 1.0,
+      "conviction": "HIGH"
+    },
+    {
+      "asset_class": "govt_bonds",
+      "views": {
+        "blackrock": "UW",
+        "vanguard": "OW",
+        "pimco": "OW",
+        "jpm": "OW",
+        "goldman": "N",
+        "morgan_stanley": "N",
+        "bofa_fms": "UW",
+        "marks": null,
+        "gmo": "N",
+        "aqr": "N"
+      },
+      "consensus": "SPLIT",
+      "agreement_score": 0.33,
+      "conviction": "LOW"
+    },
+    {
+      "asset_class": "credit",
+      "views": {
+        "blackrock": "OW",
+        "vanguard": "OW",
+        "pimco": "N",
+        "jpm": "OW",
+        "goldman": "OW",
+        "morgan_stanley": "OW",
+        "bofa_fms": null,
+        "marks": null,
+        "gmo": null,
+        "aqr": null
+      },
+      "consensus": "BULLISH",
+      "agreement_score": 0.83,
+      "conviction": "HIGH"
+    },
+    {
+      "asset_class": "commodities_energy",
+      "views": {
+        "blackrock": null,
+        "vanguard": null,
+        "pimco": null,
+        "jpm": "N",
+        "goldman": "N",
+        "morgan_stanley": "UW",
+        "bofa_fms": "OW",
+        "marks": null,
+        "gmo": null,
+        "aqr": null
+      },
+      "consensus": "SPLIT",
+      "agreement_score": 0.25,
+      "conviction": "LOW"
+    },
+    {
+      "asset_class": "commodities_industrial_metals",
+      "views": {
+        "blackrock": null,
+        "vanguard": null,
+        "pimco": null,
+        "jpm": "N",
+        "goldman": "N",
+        "morgan_stanley": "UW",
+        "bofa_fms": null,
+        "marks": null,
+        "gmo": null,
+        "aqr": null
+      },
+      "consensus": "SPLIT",
+      "agreement_score": 0.0,
+      "conviction": "LOW"
+    },
+    {
+      "asset_class": "gold",
+      "views": {
+        "blackrock": null,
+        "vanguard": null,
+        "pimco": null,
+        "jpm": "OW",
+        "goldman": "OW",
+        "morgan_stanley": null,
+        "bofa_fms": "OW",
+        "marks": null,
+        "gmo": null,
+        "aqr": null
+      },
+      "consensus": "BULLISH",
+      "agreement_score": 1.0,
+      "conviction": "HIGH"
+    },
+    {
+      "asset_class": "crypto",
+      "views": {
+        "blackrock": null,
+        "vanguard": null,
+        "pimco": null,
+        "jpm": null,
+        "goldman": null,
+        "morgan_stanley": null,
+        "bofa_fms": null,
+        "marks": null,
+        "gmo": null,
+        "aqr": null
+      },
+      "consensus": "—",
+      "agreement_score": null,
+      "conviction": null
+    },
+    {
+      "asset_class": "cash",
+      "views": {
+        "blackrock": null,
+        "vanguard": "UW",
+        "pimco": "UW",
+        "jpm": "UW",
+        "goldman": "UW",
+        "morgan_stanley": "UW",
+        "bofa_fms": "OW",
+        "marks": null,
+        "gmo": null,
+        "aqr": "OW"
+      },
+      "consensus": "SHIFTING",
+      "agreement_score": 0.29,
+      "conviction": "LOW"
+    }
+  ],
+  "themes": [
+    {
+      "title": "Stagflation trade activated — Iran war oil shock meets sticky inflation",
+      "firms_flagging": ["bofa_fms", "pimco", "blackrock", "gmo"],
+      "conviction": "HIGH",
+      "contrarian_view": "Morgan Stanley argues this is early-cycle re-acceleration, not stagflation. AAII/CNN sentiment at extreme fear is historically contrarian bullish."
+    },
+    {
+      "title": "Great rotation away from US exceptionalism into EM and international value",
+      "firms_flagging": ["bofa_fms", "gmo", "aqr", "goldman", "jpm"],
+      "conviction": "HIGH",
+      "contrarian_view": "US earnings growth still 12%+. AI capex is real. Betting against US equities has been a losing trade for 15 years."
+    }
+  ],
+  "risks": [
+    {
+      "risk": "Iran war escalation / oil above $120",
+      "probability": "moderate_high",
+      "impact": "severe",
+      "flagged_by": ["bofa_fms", "bis", "blackrock", "pimco"]
+    },
+    {
+      "risk": "Stagflation — growth slows while inflation re-accelerates",
+      "probability": "moderate",
+      "impact": "high",
+      "flagged_by": ["bofa_fms", "pimco", "blackrock"]
+    },
+    {
+      "risk": "Private credit systemic event",
+      "probability": "low_moderate",
+      "impact": "severe",
+      "flagged_by": ["bofa_fms"]
+    },
+    {
+      "risk": "AI valuation reset / mega-cap IPO pipeline pressure",
+      "probability": "moderate",
+      "impact": "high",
+      "flagged_by": ["gmo", "marks", "vanguard"]
+    },
+    {
+      "risk": "Fed credibility / independence erosion",
+      "probability": "low",
+      "impact": "severe",
+      "flagged_by": ["pimco"]
+    },
+    {
+      "risk": "Non-linear market break — trap door crash",
+      "probability": "low",
+      "impact": "severe",
+      "flagged_by": ["hussman"]
+    },
+    {
+      "risk": "Capital war — foreign dumping of US assets",
+      "probability": "low",
+      "impact": "catastrophic",
+      "flagged_by": ["bridgewater", "dalio"]
+    }
+  ],
+  "portfolio_alignment": {
+    "aligned_with_consensus": ["GLD", "SGOL", "GLDM", "GDX", "SLV", "GSD", "NU", "KSA", "EUAD", "XLE"],
+    "against_consensus": ["COPX"],
+    "missing_consensus_overweights": ["intl_dm_equities", "govt_bonds_intermediate", "em_equities_broad"],
+    "crowding_warnings": ["GLDM", "GDX", "SLV", "SMH"],
+    "concentration_warning": "Precious metals at 44% far exceeds institutional allocation ranges (typically 5-15%)",
+    "behavioral_flags": [
+      {
+        "position": "COPX",
+        "flag": "averaging_down",
+        "factor_id": 7,
+        "note": "Added Jan 23+29 while position was down. Now -23.6%. Stop breached. Consensus UW industrial metals."
+      },
+      {
+        "position": "IBIT",
+        "flag": "disposition_effect",
+        "factor_id": 1,
+        "note": "-23.8%. 15% trailing stop breached. No institutional support for crypto. Holding a breached stop."
+      },
+      {
+        "position": "GDX",
+        "flag": "performance_chasing",
+        "factor_id": 6,
+        "note": "Bought 250 shares in March at $105 after gold ran from $2,700 to $5,000. Most crowded trade per BofA FMS."
+      },
+      {
+        "position": "portfolio_overall",
+        "flag": "diversification_deficit",
+        "factor_id": 3,
+        "note": "44% precious metals, 92.9% USD, 0% bonds. Factor 3 score 1.000 (highest severity). Consensus says add intl DM equities and intermediate bonds."
+      }
+    ]
+  },
+  "action_implications": [
+    {
+      "position": "COPX",
+      "current_pl_pct": -23.6,
+      "consensus": "UW",
+      "consensus_firms_agreeing": 2,
+      "consensus_firms_total": 3,
+      "behavioral_flags": ["averaging_down", "disposition_effect"],
+      "implication": "reduce",
+      "conviction": "HIGH",
+      "counter_case": "Gromen/Lyn Alden commodity supercycle thesis. China stimulus could reignite copper demand."
+    },
+    {
+      "position": "IBIT",
+      "current_pl_pct": -23.8,
+      "consensus": "no_view",
+      "consensus_firms_agreeing": 0,
+      "consensus_firms_total": 0,
+      "behavioral_flags": ["disposition_effect"],
+      "implication": "reduce",
+      "conviction": "HIGH",
+      "counter_case": "Halving cycle thesis suggests H2 2026 rally."
+    },
+    {
+      "position": "precious_metals_overall",
+      "current_pl_pct": null,
+      "consensus": "OW",
+      "consensus_firms_agreeing": 3,
+      "consensus_firms_total": 3,
+      "behavioral_flags": ["concentration", "performance_chasing", "recency_bias"],
+      "implication": "reduce_to_30pct",
+      "conviction": "MODERATE",
+      "counter_case": "JPM $5K and GS $5,400 targets imply 10-20% upside. Central bank buying is structural."
+    },
+    {
+      "position": "intl_dm_equities",
+      "current_pl_pct": null,
+      "consensus": "OW",
+      "consensus_firms_agreeing": 5,
+      "consensus_firms_total": 8,
+      "behavioral_flags": ["diversification_deficit"],
+      "implication": "add",
+      "conviction": "MODERATE",
+      "counter_case": "Morgan Stanley prefers US. Europe faces energy cost headwinds."
+    },
+    {
+      "position": "govt_bonds_5_10yr",
+      "current_pl_pct": null,
+      "consensus": "OW",
+      "consensus_firms_agreeing": 3,
+      "consensus_firms_total": 9,
+      "behavioral_flags": ["diversification_deficit"],
+      "implication": "add",
+      "conviction": "MODERATE",
+      "counter_case": "BlackRock says long bonds no longer provide ballast in supply shocks. Rates could rise further."
+    },
+    {
+      "position": "AMZN",
+      "current_pl_pct": -16.9,
+      "consensus": "SPLIT",
+      "consensus_firms_agreeing": 3,
+      "consensus_firms_total": 8,
+      "behavioral_flags": ["disposition_effect_approaching"],
+      "implication": "watch",
+      "conviction": "LOW",
+      "counter_case": "Earnings strong. Cloud/AI spending intact. Hold unless -20% stop triggers."
+    },
+    {
+      "position": "XLE",
+      "current_pl_pct": 5.2,
+      "consensus": "OW",
+      "consensus_firms_agreeing": 1,
+      "consensus_firms_total": 3,
+      "behavioral_flags": [],
+      "implication": "hold",
+      "conviction": "LOW",
+      "counter_case": "Ceasefire would collapse oil and XLE. Consider trailing stop."
+    }
+  ]
+}
